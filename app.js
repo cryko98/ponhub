@@ -149,7 +149,7 @@ function renderGrid(){
 
 function renderCard(v, i){
   const coming = !v.ad && !v.img;
-  const thumb = v.ad ? placeholderHtml("Your image here")
+  const thumb = v.ad ? `<img class="ad-logo" src="ponhub.jpg" alt="Ponhub" />`
     : v.img ? `<img src="${v.img}" alt="${v.title}" />`
     : comingSoonHtml(i);
   const topRight = v.ad ? `<span class="ad-badge">Ad</span>` : (v.hd ? '<span class="hd">HD</span>' : '');
