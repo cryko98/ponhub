@@ -3,6 +3,7 @@ const CONTRACT_ADDRESS = "0xb815e261f5a267dc33e4e610f591b766d6cbb6ec";
 
 // ====== SOCIAL LINKS ======
 const X_COMMUNITY = "https://x.com/i/communities/2038276050287993288";
+const TELEGRAM = "https://t.me/ponhubrh";
 
 // ====== HELPERS ======
 const $ = (s, r = document) => r.querySelector(s);
@@ -61,8 +62,8 @@ const TAGS = [
 // Give each card its own image via the "img" field, e.g. img: "thumbs/1.jpg".
 // Leave it "" to show the placeholder. Edit title/desc freely.
 const videos = [
-  { title: "$PONHUB Just 100x'd And My Wife Came Back — Full Diamond Hands Story", desc: "The ultimate HODL story. He never sold, and neither should you. NSFG (Not Safe For Gains).", img: "", duration: "34:18", uploader: "DiamondChad", verified: true, crown: true, views: "44.6K", hd: true, tags: ["diamond hands", "100x gains"] },
-  { title: "Tea Time With My New Neighbor Turned Into A Hard Pump And Sloppy Green Candles", desc: "It started with tea and ended with a full send. Green candles everywhere.", img: "", duration: "16:16", uploader: "SweetieFox", verified: true, crown: true, views: "453K", hd: true, tags: ["green candles", "degen mode"] },
+  { title: "$PONHUB Just 100x'd And My Wife Came Back — Full Diamond Hands Story", desc: "The ultimate HODL story. He never sold, and neither should you. NSFG (Not Safe For Gains).", img: "grok-image-43957685-6059-4a6e-a5ef-f9220f9a37fe.jpg", duration: "34:18", uploader: "DiamondChad", verified: true, crown: true, views: "44.6K", hd: true, tags: ["diamond hands", "100x gains"] },
+  { title: "Tea Time With My New Neighbor Turned Into A Hard Pump And Sloppy Green Candles", desc: "It started with tea and ended with a full send. Green candles everywhere.", img: "grok-image-fadc3e41-9984-4236-b2fe-fd1ecbfdbc0c.jpg", duration: "16:16", uploader: "SweetieFox", verified: true, crown: true, views: "453K", hd: true, tags: ["green candles", "degen mode"] },
   { title: "Sexy Big Bags And Gains — Colombian Degen Buys The Dip Hard — Luke Cooper", desc: "When the chart dips, degens buy. A masterclass in conviction.", img: "", duration: "21:24", uploader: "LukeCooper", verified: true, crown: false, views: "11.8K", hd: true, tags: ["buy the dip", "degen mode"] },
   { title: "$0.00 FEES FOR 7 DAYS — Trade $PONHUB Now", desc: "Sponsored — zero fees for a week. Buy, hold, repeat.", img: "", duration: "", uploader: "Ponhub Ads", verified: false, crown: false, views: "", hd: false, ad: true, tags: [] },
   { title: "ANGELS.LOVE Amazing Holders Cherry & Stacy Aping Into One Lucky Coin", desc: "Two holders, one lucky coin. The community goes wild.", img: "", duration: "15:07", uploader: "AngelsLove", verified: false, crown: false, views: "175K", hd: true, tags: ["$ponhub to the moon", "degen mode"] },
@@ -125,7 +126,7 @@ function renderGrid(){
 }
 
 function renderCard(v, i){
-  const thumb = v.img ? `<img src="${v.img}" alt="${v.title}" loading="lazy" />` : placeholderHtml("Your image here");
+  const thumb = v.img ? `<img src="${v.img}" alt="${v.title}" />` : placeholderHtml("Your image here");
   const topRight = v.ad ? `<span class="ad-badge">Ad</span>` : (v.hd ? '<span class="hd">HD</span>' : '');
   const duration = v.duration ? `<span class="duration">${v.duration}</span>` : '';
   const metaTop = v.ad
@@ -179,7 +180,7 @@ function renderDrawer(){
 function renderSocials(){
   $("#socials").innerHTML =
     `<a href="${X_COMMUNITY}" target="_blank" rel="noopener">${icon("twitter")} <span>X Community</span></a>` +
-    `<a href="#" data-toast="Join our Telegram" data-icon="telegram">${icon("telegram")} <span>Telegram</span></a>` +
+    `<a href="${TELEGRAM}" target="_blank" rel="noopener">${icon("telegram")} <span>Telegram</span></a>` +
     `<a href="#" data-toast="Chart on Dexscreener" data-icon="chart">${icon("chart")} <span>Dexscreener</span></a>`;
 }
 
