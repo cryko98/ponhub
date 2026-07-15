@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ponhub - The World's Leading Meme Coin Platform</title>
+<meta name="description" content="Ponhub $PONHUB — a legnagyobb meme coin platform. Nézd a legjobb meméket, csatlakozz a közösséghez!" />
+<link rel="icon" type="image/jpeg" href="ponhub.jpg" />
+<link rel="apple-touch-icon" href="ponhub.jpg" />
+<link rel="stylesheet" href="styles.css" />
+<meta property="og:title" content="Ponhub $PONHUB" />
+<meta property="og:description" content="The World's Leading Meme Coin Platform" />
+<meta property="og:image" content="ponhub.jpg" />
+</head>
+<body>
+
+<!-- ===== TOP HEADER ===== -->
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a href="#" class="logo" aria-label="Ponhub">
+      <span class="logo-pon">Pon</span><span class="logo-hub">hub</span>
+    </a>
+
+    <form class="search" onsubmit="return false;">
+      <input type="text" placeholder="Keress memékat, coinokat, gainzeket..." aria-label="Keresés" />
+      <button type="submit" aria-label="Keresés">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1 1 14 9.5 4.49 4.49 0 0 1 9.5 14z"/></svg>
+      </button>
+    </form>
+
+    <div class="top-actions">
+      <a href="#" class="btn btn-buy">BUY $PONHUB</a>
+      <a href="#" class="btn btn-ghost">Csatlakozz</a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== CONTRACT ADDRESS BAR ===== -->
+<div class="ca-bar">
+  <div class="ca-inner">
+    <span class="ca-label">CA:</span>
+    <span class="ca-value" id="ca">xxxxxxxxxxxxxxxxxxxxxxxxx</span>
+    <button class="ca-copy" onclick="copyCA()">Másolás</button>
+  </div>
+</div>
+
+<!-- ===== CATEGORY NAV ===== -->
+<nav class="cat-nav">
+  <div class="cat-nav-inner">
+    <a href="#" class="active">Home</a>
+    <a href="#">Trending 🔥</a>
+    <a href="#">Gainz</a>
+    <a href="#">Diamond Hands 💎</a>
+    <a href="#">Memes</a>
+    <a href="#">Whales 🐋</a>
+    <a href="#">Community</a>
+    <a href="#">Roadmap</a>
+    <a href="#">How to Buy</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Üdv a <span>Ponhub</span>-on</h1>
+    <p>A világ vezető meme coin platformja. <strong>$PONHUB</strong> — a leghosszabb, legkeményebb pump.</p>
+  </div>
+</section>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="content">
+
+  <div class="section-head">
+    <h2>Ajánlott memék <span class="badge-pro">PONHUB</span></h2>
+    <div class="section-filters">
+      <a href="#" class="active">Featured Recently</a>
+      <a href="#">Most Viewed</a>
+      <a href="#">Top Rated</a>
+      <a href="#">Longest Pump</a>
+    </div>
+  </div>
+
+  <div class="video-grid" id="grid">
+    <!-- Kártyák JS-ből generálva. Ha képeid vannak, a data-img mezőt írd át. -->
+  </div>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <a href="#" class="logo footer-logo">
+      <span class="logo-pon">Pon</span><span class="logo-hub">hub</span>
+    </a>
+    <p class="footer-ca">CA: <span>xxxxxxxxxxxxxxxxxxxxxxxxx</span></p>
+    <p class="disclaimer">$PONHUB egy meme coin, kizárólag szórakoztatási célból. Nincs benne belső érték, nincs pénzügyi tanácsadás. DYOR. 18+</p>
+    <p class="copyright">© 2026 Ponhub — All memes reserved.</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
