@@ -113,12 +113,13 @@ function placeholderHtml(text){
     </div>`;
 }
 
-// "Coming soon" thumbnail — a real image sits underneath, blurred out.
+// Premium-locked thumbnail — a real image sits underneath, blurred out.
 function comingSoonHtml(i){
-  return `<img class="blur-img" src="${blurFor(i)}" alt="Coming soon" />
+  return `<img class="blur-img" src="${blurFor(i)}" alt="Premium only" />
     <div class="coming-overlay">
       ${icon("lock", "cs-lock")}
-      <span class="cs-text">COMING SOON</span>
+      <span class="cs-text">PREMIUM ONLY</span>
+      <span class="cs-sub">Unlock with Ponhub Premium</span>
     </div>`;
 }
 
@@ -220,8 +221,8 @@ function openVideo(idx){
   const v = videos[idx];
   $("#modalPlayer").innerHTML = v.img
     ? `<img src="${v.img}" alt="${v.title}" />`
-    : `<img class="blur-img" src="${blurFor(idx)}" alt="Coming soon" />
-       <div class="coming-overlay">${icon("lock", "cs-lock")}<span class="cs-text">COMING SOON</span></div>`;
+    : `<img class="blur-img" src="${blurFor(idx)}" alt="Premium only" />
+       <div class="coming-overlay">${icon("lock", "cs-lock")}<span class="cs-text">PREMIUM ONLY</span><span class="cs-sub">This video is available to Ponhub Premium members only</span></div>`;
   $("#modalTitle").textContent = v.title;
   $("#modalUploader").innerHTML = `${v.uploader}${v.verified ? verifiedSvg : ''}${v.crown ? crownSvg : ''}`;
   $("#modalViews").innerHTML = `${icon("eye")} ${v.views} views`;
