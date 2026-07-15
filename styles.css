@@ -103,6 +103,15 @@ button{ font-family:inherit; }
 .thumb .placeholder .ph-logo .p2{ background:#3a3320; color:var(--orange); padding:1px 6px; border-radius:4px; }
 .thumb .placeholder .ph-text{ font-size:12px; }
 .card:hover .thumb{ border-color:var(--orange); }
+
+/* coming soon — real image sits underneath, blurred out */
+.thumb.coming{ border:2px solid #2f2f2f; }
+.card:hover .thumb.coming{ border-color:var(--orange); }
+.thumb.coming .blur-img{ width:100%; height:100%; object-fit:cover; filter:blur(16px) brightness(.5); transform:scale(1.18); }
+.coming-overlay{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; color:#fff; text-align:center; }
+.coming-overlay .cs-lock{ width:28px; height:28px; fill:var(--orange); }
+.coming-overlay .cs-text{ font-weight:bold; letter-spacing:2px; font-size:14px; text-shadow:0 1px 4px rgba(0,0,0,.7); }
+.card:hover .coming-overlay .cs-text{ color:var(--orange); }
 .thumb .play-hint{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; opacity:0; transition:.15s; background:rgba(0,0,0,.35); }
 .card:hover .play-hint{ opacity:1; }
 .thumb .play-hint svg{ width:54px; height:54px; fill:var(--orange); }
@@ -157,7 +166,11 @@ button{ font-family:inherit; }
 .modal{ background:#181818; border-radius:10px; width:100%; max-width:720px; max-height:90vh; overflow:auto; position:relative; box-shadow:0 20px 60px rgba(0,0,0,.6); }
 .modal-close{ position:absolute; top:10px; right:12px; background:rgba(0,0,0,.5); border:none; color:#fff; font-size:26px; cursor:pointer; line-height:1; z-index:2; width:36px; height:36px; border-radius:50%; }
 .modal-close:hover{ background:var(--orange); color:#000; }
-.modal-player{ aspect-ratio:16/9; background:#000; display:flex; align-items:center; justify-content:center; border-bottom:2px solid var(--orange); }
+.modal-player{ position:relative; aspect-ratio:16/9; background:#000; display:flex; align-items:center; justify-content:center; border-bottom:2px solid var(--orange); overflow:hidden; }
+.modal-player .blur-img{ width:100%; height:100%; object-fit:cover; filter:blur(22px) brightness(.5); transform:scale(1.18); }
+.modal-player .coming-overlay{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; color:#fff; }
+.modal-player .cs-lock{ width:40px; height:40px; fill:var(--orange); }
+.modal-player .cs-text{ font-weight:bold; letter-spacing:3px; font-size:20px; text-shadow:0 1px 6px rgba(0,0,0,.7); }
 .modal-player .placeholder{ text-align:center; color:#666; }
 .modal-player .placeholder .ph-logo{ font-size:34px; font-weight:bold; margin-bottom:8px; }
 .modal-player .placeholder .ph-logo .p1{ color:#888; }

@@ -5,6 +5,18 @@ const CONTRACT_ADDRESS = "0xb815e261f5a267dc33e4e610f591b766d6cbb6ec";
 const X_COMMUNITY = "https://x.com/i/communities/2038276050287993288";
 const TELEGRAM = "https://t.me/ponhubrh";
 
+// ====== IMAGE POOL (used to blur behind "coming soon" cards) ======
+const IMAGES = [
+  "grok-image-43957685-6059-4a6e-a5ef-f9220f9a37fe.jpg",
+  "grok-image-fadc3e41-9984-4236-b2fe-fd1ecbfdbc0c.jpg",
+  "grok-image-620dc4e1-6c82-4110-9f56-2b4108532184.jpg",
+  "grok-image-6d484ca0-a964-4153-81e0-2c68eae2affa.jpg",
+  "grok-image-98f9d4ae-fc58-4aac-b004-04a35fb321da.jpg",
+  "grok-image-adf30328-1092-465b-af47-09f3a3886ee6.jpg",
+  "grok-image-fde5b23d-dc73-4688-9c49-b1d2c3c80667.jpg"
+];
+const blurFor = i => IMAGES[i % IMAGES.length];
+
 // ====== HELPERS ======
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -29,6 +41,7 @@ const ICON_PATHS = {
   twitter:  '<path d="M18.9 2H22l-7.1 8.1L23 22h-6.6l-5.2-6.8L5.3 22H2l7.6-8.7L1.5 2h6.8l4.7 6.2L18.9 2zm-2.3 18h1.8L7.5 3.9H5.6L16.6 20z"/>',
   telegram: '<path d="M21.9 4.3 2.6 11.8c-.9.4-.9 1.6.1 1.9l4.9 1.5 1.9 5.9c.2.7 1.1.9 1.6.3l2.7-2.7 4.8 3.5c.6.4 1.4.1 1.6-.6l3.1-15c.2-.9-.7-1.6-1.4-1.3zM8.6 14.2l8.4-5.3c.2-.1.4.1.2.3l-6.9 6.4c-.2.2-.3.5-.4.8l-.3 2.3-1-4.5z"/>',
   check:    '<path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/>',
+  lock:     '<path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5zm-3 8V7a3 3 0 0 1 6 0v3H9z"/>',
   play:     '<path d="M8 5v14l11-7z"/>',
   eye:      '<path d="M12 5c-5 0-9 4.5-10 7 1 2.5 5 7 10 7s9-4.5 10-7c-1-2.5-5-7-10-7zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-6a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>',
   verified: '<path d="M12 2 9.8 4.2 6.7 3.6 5.6 6.6 2.6 7.7l.6 3.1L1 13l2.2 2.2-.6 3.1 3 1.1 1.1 3 3.1-.6L12 22l2.2-2.1 3.1.6 1.1-3 3-1.1-.6-3.1L23 13l-2.2-2.2.6-3.1-3-1.1-1.1-3-3.1.6L12 2zm-1.2 13.2-3-3 1.4-1.4 1.6 1.6 4-4 1.4 1.4-5.4 5.4z"/>'
@@ -64,12 +77,12 @@ const TAGS = [
 const videos = [
   { title: "$PONHUB Just 100x'd And My Wife Came Back — Full Diamond Hands Story", desc: "The ultimate HODL story. He never sold, and neither should you. NSFG (Not Safe For Gains).", img: "grok-image-43957685-6059-4a6e-a5ef-f9220f9a37fe.jpg", duration: "34:18", uploader: "DiamondChad", verified: true, crown: true, views: "44.6K", hd: true, tags: ["diamond hands", "100x gains"] },
   { title: "Tea Time With My New Neighbor Turned Into A Hard Pump And Sloppy Green Candles", desc: "It started with tea and ended with a full send. Green candles everywhere.", img: "grok-image-fadc3e41-9984-4236-b2fe-fd1ecbfdbc0c.jpg", duration: "16:16", uploader: "SweetieFox", verified: true, crown: true, views: "453K", hd: true, tags: ["green candles", "degen mode"] },
-  { title: "Sexy Big Bags And Gains — Colombian Degen Buys The Dip Hard — Luke Cooper", desc: "When the chart dips, degens buy. A masterclass in conviction.", img: "", duration: "21:24", uploader: "LukeCooper", verified: true, crown: false, views: "11.8K", hd: true, tags: ["buy the dip", "degen mode"] },
+  { title: "Sexy Big Bags And Gains — Colombian Degen Buys The Dip Hard — Luke Cooper", desc: "When the chart dips, degens buy. A masterclass in conviction.", img: "grok-image-620dc4e1-6c82-4110-9f56-2b4108532184.jpg", duration: "21:24", uploader: "LukeCooper", verified: true, crown: false, views: "11.8K", hd: true, tags: ["buy the dip", "degen mode"] },
   { title: "$0.00 FEES FOR 7 DAYS — Trade $PONHUB Now", desc: "Sponsored — zero fees for a week. Buy, hold, repeat.", img: "", duration: "", uploader: "Ponhub Ads", verified: false, crown: false, views: "", hd: false, ad: true, tags: [] },
-  { title: "ANGELS.LOVE Amazing Holders Cherry & Stacy Aping Into One Lucky Coin", desc: "Two holders, one lucky coin. The community goes wild.", img: "", duration: "15:07", uploader: "AngelsLove", verified: false, crown: false, views: "175K", hd: true, tags: ["$ponhub to the moon", "degen mode"] },
-  { title: "TRUTH OR DARE Gone Wild! — She Begged For Multiple 100x Entries!", desc: "Truth: she's all in. Dare: buy more. She did both.", img: "", duration: "16:36", uploader: "AliceRoss", verified: true, crown: false, views: "25.9K", hd: true, tags: ["100x gains", "buy the dip"] },
-  { title: "WHALES DAY — Filthy Whale Home Alone Needs More $PONHUB", desc: "A whale alone at home, refreshing the chart. Relatable content.", img: "", duration: "10:00", uploader: "WhalesDay", verified: false, crown: false, views: "58.1K", hd: true, tags: ["whale alert", "liquidity locked"] },
-  { title: "Got To Ape Early In The Morning — Vertical Pump", desc: "GM frens. Coffee, chart, ape. In that order.", img: "", duration: "1:24", uploader: "Sabrina_Great", verified: true, crown: false, views: "2K", hd: false, tags: ["gm frens", "degen mode"] },
+  { title: "ANGELS.LOVE Amazing Holders Cherry & Stacy Aping Into One Lucky Coin", desc: "Two holders, one lucky coin. The community goes wild.", img: "grok-image-adf30328-1092-465b-af47-09f3a3886ee6.jpg", duration: "15:07", uploader: "AngelsLove", verified: false, crown: false, views: "175K", hd: true, tags: ["$ponhub to the moon", "degen mode"] },
+  { title: "TRUTH OR DARE Gone Wild! — She Begged For Multiple 100x Entries!", desc: "Truth: she's all in. Dare: buy more. She did both.", img: "grok-image-6d484ca0-a964-4153-81e0-2c68eae2affa.jpg", duration: "16:36", uploader: "AliceRoss", verified: true, crown: false, views: "25.9K", hd: true, tags: ["100x gains", "buy the dip"] },
+  { title: "WHALES DAY — Filthy Whale Home Alone Needs More $PONHUB", desc: "A whale alone at home, refreshing the chart. Relatable content.", img: "grok-image-98f9d4ae-fc58-4aac-b004-04a35fb321da.jpg", duration: "10:00", uploader: "WhalesDay", verified: false, crown: false, views: "58.1K", hd: true, tags: ["whale alert", "liquidity locked"] },
+  { title: "Got To Ape Early In The Morning — Vertical Pump", desc: "GM frens. Coffee, chart, ape. In that order.", img: "grok-image-fde5b23d-dc73-4688-9c49-b1d2c3c80667.jpg", duration: "1:24", uploader: "Sabrina_Great", verified: true, crown: false, views: "2K", hd: false, tags: ["gm frens", "degen mode"] },
   { title: "POV: You Put Your Whole Paycheck Into The Meme Coin", desc: "Valhalla or the basement — you decide. An epic degen journey.", img: "", duration: "8:21", uploader: "DegenKing", verified: true, crown: false, views: "2.8M", hd: true, tags: ["degen mode", "100x gains"] },
   { title: "The Whale Bought And Everyone Pumped — Community Reaction Full Uncut", desc: "One whale, one buy, infinite green. The community reacts in real time.", img: "", duration: "24:00", uploader: "WhaleWatcher", verified: true, crown: true, views: "6.9M", hd: true, tags: ["whale alert", "green candles"] },
   { title: "How To Hold Your Coin When Everybody Is Dumping — HODL Tutorial", desc: "Patience tutorial for beginners. Diamond hands technique explained.", img: "", duration: "5:55", uploader: "HodlMaster", verified: false, crown: false, views: "1.1M", hd: false, tags: ["diamond hands", "paper hands rekt"] },
@@ -100,6 +113,15 @@ function placeholderHtml(text){
     </div>`;
 }
 
+// "Coming soon" thumbnail — a real image sits underneath, blurred out.
+function comingSoonHtml(i){
+  return `<img class="blur-img" src="${blurFor(i)}" alt="Coming soon" />
+    <div class="coming-overlay">
+      ${icon("lock", "cs-lock")}
+      <span class="cs-text">COMING SOON</span>
+    </div>`;
+}
+
 // ====== RENDER GRID ======
 let state = { search: "", tag: null };
 
@@ -126,9 +148,13 @@ function renderGrid(){
 }
 
 function renderCard(v, i){
-  const thumb = v.img ? `<img src="${v.img}" alt="${v.title}" />` : placeholderHtml("Your image here");
+  const coming = !v.ad && !v.img;
+  const thumb = v.ad ? placeholderHtml("Your image here")
+    : v.img ? `<img src="${v.img}" alt="${v.title}" />`
+    : comingSoonHtml(i);
   const topRight = v.ad ? `<span class="ad-badge">Ad</span>` : (v.hd ? '<span class="hd">HD</span>' : '');
   const duration = v.duration ? `<span class="duration">${v.duration}</span>` : '';
+  const playHint = coming ? '' : `<span class="play-hint">${icon("play")}</span>`;
   const metaTop = v.ad
     ? `<div class="card-meta-top"><span class="uploader">${v.uploader}</span></div>`
     : `<div class="card-meta-top">
@@ -137,11 +163,11 @@ function renderCard(v, i){
        </div>`;
   return `
   <a href="#" class="card" data-idx="${i}">
-    <div class="thumb">
+    <div class="thumb${coming ? ' coming' : ''}">
       ${thumb}
       ${topRight}
       ${duration}
-      <span class="play-hint">${icon("play")}</span>
+      ${playHint}
     </div>
     <div class="card-body">
       ${metaTop}
@@ -192,7 +218,10 @@ let currentVideo = -1;
 function openVideo(idx){
   currentVideo = idx;
   const v = videos[idx];
-  $("#modalPlayer").innerHTML = v.img ? `<img src="${v.img}" alt="${v.title}" />` : placeholderHtml("Your video goes here");
+  $("#modalPlayer").innerHTML = v.img
+    ? `<img src="${v.img}" alt="${v.title}" />`
+    : `<img class="blur-img" src="${blurFor(idx)}" alt="Coming soon" />
+       <div class="coming-overlay">${icon("lock", "cs-lock")}<span class="cs-text">COMING SOON</span></div>`;
   $("#modalTitle").textContent = v.title;
   $("#modalUploader").innerHTML = `${v.uploader}${v.verified ? verifiedSvg : ''}${v.crown ? crownSvg : ''}`;
   $("#modalViews").innerHTML = `${icon("eye")} ${v.views} views`;
