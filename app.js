@@ -2,7 +2,7 @@
 const CONTRACT_ADDRESS = "xxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 
 // ====== SOCIAL LINKS ======
-const X_COMMUNITY = "https://x.com/i/communities/2038276050287993288";
+const X_COMMUNITY = "https://x.com/Ponhub_rh";
 const TELEGRAM = "https://t.me/ponhubrh";
 
 // ====== IMAGE POOL (used to blur behind "coming soon" cards) ======
@@ -206,7 +206,7 @@ function renderDrawer(){
 }
 function renderSocials(){
   $("#socials").innerHTML =
-    `<a href="${X_COMMUNITY}" target="_blank" rel="noopener">${icon("twitter")} <span>X Community</span></a>` +
+    `<a href="${X_COMMUNITY}" target="_blank" rel="noopener">${icon("twitter")} <span>X (Twitter)</span></a>` +
     `<a href="${TELEGRAM}" target="_blank" rel="noopener">${icon("telegram")} <span>Telegram</span></a>` +
     `<a href="#" data-toast="Chart on Dexscreener" data-icon="chart">${icon("chart")} <span>Dexscreener</span></a>`;
 }
