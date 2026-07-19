@@ -1,5 +1,5 @@
 // ====== CONTRACT ADDRESS ======
-const CONTRACT_ADDRESS = "0xb815e261f5a267dc33e4e610f591b766d6cbb6ec";
+const CONTRACT_ADDRESS = "xxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 
 // ====== SOCIAL LINKS ======
 const X_COMMUNITY = "https://x.com/i/communities/2038276050287993288";
